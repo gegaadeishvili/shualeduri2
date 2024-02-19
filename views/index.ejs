@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Manager</title>
+  </head>
+  <body>
+    <h1>Expense Manager</h1>
+
+    <form action="/add" method="POST">
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" name="amount" required />
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <h2>Expenses</h2>
+    <ul style="width: 200px">
+      <% expenses.forEach((expense) => { %>
+      <li
+        style="
+          display: flex;
+          padding: 15px;
+          gap: 10px;
+          cursor: pointer;
+          width: 100%;
+          height: 100%;
+          align-items: center;
+          justify-content: space-around;
+          background-color: rgb(242, 242, 242);
+          margin: 5px;
+        "
+        onclick="location.href='/expenses/<%= expense.id %>';"
+      >
+        #<%= expense.id %> Amount: <%= expense.info %>$
+        <form action="/delete/<%= expense.id %>" method="POST">
+          <!-- <input type="hidden" name="index" value="<%= expense.id %>" /> -->
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
