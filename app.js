@@ -9,6 +9,7 @@ let db = new sqlite3.Database("./expenses.db", (err) => {
   }
   console.log("Connected to the chinook database.");
 });
+//
 
 db.serialize(() => {
   db.run("DROP TABLE IF EXISTS expenses");
